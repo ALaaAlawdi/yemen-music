@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yemen Music Graduate Projects</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Yemen Music Projects</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#upload">Upload</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Upload Section -->
+    <section id="upload">
+        <h2>Upload and Preprocess an Audio File</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="audiofile">Choose an audio file (wav, mp3, ogg, m4a):</label>
+            <input type="file" name="audiofile" id="audiofile" accept="audio/*" required>
+            <button type="submit">Upload and Process</button>
+        </form>
+
+        <!-- Loading spinner -->
+        <div id="loading"></div>
+
+        <!-- Output Section -->
+        {% if predicted_labels %}
+        <div id="output">
+            <h3>Predicted Labels:</h3>
+            <ul>
+                {% for model, label in predicted_labels.items() %}
+                <li><strong>{{ model }}:</strong> {{ label }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Weighted Sums:</h3>
+            <ul>
+                {% for label, weight in weighted_sums.items() %}
+                <li><strong>{{ label }}:</strong> {{ weight }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Final Prediction: <strong>{{ final_prediction }}</strong></h2>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Yemen Music Graduate Projects. All rights reserved.</p>
+    </footer>
+
+    <!-- Loading Spinner Script -->
+    <script>
+        const form = document.querySelector('form');
+        const loading = document.getElementById('loading');
+
+        form.addEventListener('submit', function() {
+            loading.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

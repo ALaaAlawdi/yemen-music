@@ -1,0 +1,11 @@
+              precision    recall  f1-score   support
+
+        adny       0.88      0.97      0.92       175
+      hdramy       0.98      0.95      0.97       194
+        lhgy       0.97      0.91      0.94       196
+       snany       0.94      0.94      0.94       218
+      tihamy       0.84      0.86      0.85       110
+
+    accuracy                           0.93       893
+   macro avg       0.92      0.93      0.92       893
+weighted avg       0.93      0.93      0.93       893
